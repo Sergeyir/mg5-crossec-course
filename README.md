@@ -121,13 +121,13 @@ launch ee_aa_LO
 You will be met by various switches for generation which we don't need in this example so just press enter. After you can modify event parameters. In this course the calculation of cross section at different energies is needed so let's change the energy (GeV) of incoming particles by running
 
 ```
-set ebeam1 200
+set ebeam1 100
 ```
 
 And
 
 ```
-set ebeam2 200
+set ebeam2 100
 ```
 
 Then press enter. At this points the code will be compiled and then executable that calculates the cross seciton will be run. After finishing the calculation MadGraph will create .html file containing event information, cross section calcuation and various differential cross-sections plots. You can view it by running
@@ -137,6 +137,8 @@ open index.html
 ```
 
 Click at "Results and Event Database" to see the calculation result. Here you can also click on "MA5_report_analysis1" to see more information as well as different distributions of differential cross sections plotted on histograms.
+
+The generation process can be scripted to simplify and possibly to speed up the input. See file "run_ee_aa.mg5" which has the same instructions needed for calculation only as in this whole section (the only change is setting 100k number of events, while the default one is 10k).
 
 ## NLO example
 
