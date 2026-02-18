@@ -28,3 +28,5 @@ CMakeCache.txt
 Makefile
 py.py
 MG5_debug
+ME5_debug
+additional_command
