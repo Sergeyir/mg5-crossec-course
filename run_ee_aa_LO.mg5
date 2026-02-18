@@ -1,0 +1,6 @@
+generate e+ e- > a a
+output ee_aa_LO
+launch ee_aa_LO
+set nevents 100000
+set ebeam1 100
+set ebeam2 100
