@@ -34,6 +34,7 @@ git clone https://github.com/Sergeyir/mg5-crossec-course --depth=1
 
 Install all requirements and configure environment variables described in [Installation tutorial](INSTALLATION_TUTORIAL.md)
 
+<!--
 Python environment should work fine after the last step. If you need to use C++ for this project run
 
 ```sh
@@ -46,6 +47,7 @@ To update the repository to the newest version run in its root
 ```sh
 git pull
 ```
+-->
 
 <details>
 <summary> Implementing your changes</summary>
