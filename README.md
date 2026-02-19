@@ -103,10 +103,10 @@ Total: 1 processes with 2 diagrams
 At this point you can run
 
 ```
-display histograms
+display diagrams
 ```
 
-Which will open .eps file with drawn Feynman diagrams for our defined process. For the process in this example you should see at the bottom of histograms "QCD=0, QED=2". Do you know the meaning of this notation and why is number 2 instead of 1 present?. Weighted=4 in the upper left corner means the number of weight variations of events to be stored when calculation is launched. These weight variations are then used to estimate the systematic uncertainty of a cross section.
+Which will open .eps file with drawn Feynman diagrams for our defined process. For the process in this example you should see at the bottom of diagrams "QCD=0, QED=2". Do you know the meaning of this notation and why is number 2 instead of 1 present?. Weighted=4 in the upper left corner means the number of weight variations of events to be stored when calculation is launched. These weight variations are then used to estimate the systematic uncertainty of a cross section.
 
 To generate the code that you can run to calculate the cross section run (lets save the code in this example in "ee_aa_LO" directory)
 
