@@ -48,10 +48,10 @@ set(CMAKE_EXE_LINKER_FLAGS "${ROOT_LIB_FLAGS} ${HEPMC3_LIB_FLAGS}")
 
 include_directories(${CMAKE_SOURCE_DIR}/include ${ROOT_INCLUDE_DIRS} ${HEPMC3_INCLUDE_DIRS})
 
-#add_executable(BasicPythia ${CMAKE_SOURCE_DIR}/src/BasicPythia.cpp)
+add_executable(BasicReadLHE ${CMAKE_SOURCE_DIR}/src/BasicReadLHE.cpp)
 
 if (CMAKE_VERSION LESS 4.0)
    string(STRIP ${CMAKE_SHARED_LINKER_FLAGS} CMAKE_EXE_LINKER_FLAGS)
    string(STRIP ${CMAKE_EXE_LINKER_FLAGS} CMAKE_EXE_LINKER_FLAGS)
-   #   target_link_libraries(BasicPythia PRIVATE ${CMAKE_EXE_LINKER_FLAGS})
+   target_link_libraries(BasicReadLHE PRIVATE ${CMAKE_EXE_LINKER_FLAGS})
 endif()
