@@ -84,7 +84,7 @@ You can set higher number of threads for compilation, if you have sufficient RAM
 Finally set environmental variables
 
 ```sh
-export HEPMC_PATH=$PACKAGE_PATH/HepMC3
+export HEPMC3_PATH=$PACKAGE_PATH/HepMC3
 export PYTHONPATH=$HEPMC3_PATH/outputs/lib:$PYTHONPATH
 ```
 
