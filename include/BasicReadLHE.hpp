@@ -14,6 +14,8 @@
 #include <filesystem>
 
 #include "HepMC3/LHEFAttributes.h"
+#include "HepMC3/GenEvent.h"
+#include "HepMC3/GenParticle.h"
 
 #include "TFile.h"
 #include "TH1D.h"

@@ -25,7 +25,8 @@ Install the [required dependencies](https://root.cern/install/dependencies/).
 
 Then install ROOT6 via package manager (if available, [see here](https://root.cern/install/)) or pre-compiled release for your platform [here](https://root.cern/install/all_releases/).
 
-### Pre-compiled release
+<details>
+<summary> Installing the pre-compiled release </summary>
 
 If your option is the installation of pre-compiled release, after downloading place the .tar.gz file in $PACKAGE_PATH. After heading in $PACKAGE_PATH substitute the "name_of_file.tar.gz" for your .tar.gz file name containing ROOT6 package and run
 
@@ -40,16 +41,14 @@ export ROOT_PATH=$PACKAGE_PATH/root
 
 source $ROOT_PATH/bin/thisroot.sh
 ```
+</details>
 
-### Installation with package manager
+<details>
+<summary> Building ROOT from source </summary>
 
-With package manager compiled root binaries will be located at /bin and libraries at /lib. In this case no $ROOT_PATH is not needed to be added to your profile.
+Alternatively, you can also compile ROOT6 yourself, however it will take quite a lot of computational power and might take a long time to compile. This step is **not recommended** if you do not have enough experience compiling packages from source. But if you are determined see [Building ROOT from source](https://root.cern/install/#build-from-source)
 
-### ROOT6 compilation
-
-Alternatively, you can also compile ROOT6 yourself, however it will take quite a lot of computational power and might take a long time to compile. This step is **not recommended** if you do not have enough experience compiling packages from source.
-
-### Testing ROOT installation
+</details>
 
 If you followed throught the above instructions you can check if ROOT was installed succesfully by running in python
 
@@ -61,7 +60,18 @@ import root
 
 First find the package for your distribution containing VDT library (can be cern-vdt, libvdt-dev) and install it. This library is a requirement for HepMC. 
 
-HepMC can be installed via package manager on some distributions. See if your package manager contain hepmc package [here](https://gitlab.cern.ch/hepmc/HepMC3). Also note, that libraries for python need to be installed separately, which can be done with package manager or pip, if available. If there is no installation candidates for you, you can compile it yourself. I recommend first heading into $PACKAGE_PATH directory and then you clone the repository:
+<details>
+<summary> Intalling via package manager </summary>
+
+HepMC can be installed via package manager on some distributions. See if your package manager contain hepmc package [here](https://gitlab.cern.ch/hepmc/HepMC3). Also note, that libraries for python need to be installed separately, which can be done with package manager or pip, if available. 
+
+</details>
+
+<details>
+<summary> Manual installation </summary>
+
+First I recommend first heading into $PACKAGE_PATH directory and then you clone the repository:
+
 
 ```sh
 git clone https://gitlab.cern.ch/hepmc/HepMC3 --depth=1
@@ -87,6 +97,8 @@ Finally set environmental variables
 export HEPMC3_PATH=$PACKAGE_PATH/HepMC3
 export PYTHONPATH=$HEPMC3_PATH/outputs/lib:$PYTHONPATH
 ```
+
+</details>
 
 ## How to check the installation
 
