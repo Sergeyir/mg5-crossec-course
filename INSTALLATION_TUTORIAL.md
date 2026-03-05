@@ -96,6 +96,7 @@ Finally set environmental variables
 ```sh
 export HEPMC3_PATH=$PACKAGE_PATH/HepMC3
 export PYTHONPATH=$HEPMC3_PATH/outputs/lib:$PYTHONPATH
+export LD_LIBRARY_PATH=$HEPMC3_PATH/outputs/lib:$LD_LIBRARY_PATH
 ```
 
 </details>
