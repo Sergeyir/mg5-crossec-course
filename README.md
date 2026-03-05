@@ -36,6 +36,7 @@ Install all requirements and configure environment variables described in [Insta
 
 <!--
 Python environment should work fine after the last step. If you need to use C++ for this project run
+-->
 
 ```sh
 cmake .
@@ -47,7 +48,6 @@ To update the repository to the newest version run in its root
 ```sh
 git pull
 ```
--->
 
 <details>
 <summary> Implementing your changes</summary>
@@ -168,12 +168,17 @@ Don't forget to set the energy after launching
 
 # Using MadGraph output
 
-Instructions will appear soon
+After running the calcualtion of examples above unweighted_events.lhe.gz file should appear in ee_aa_LO/Events/run_01. This file contains all information about processed events. First extract the .gz archive to obtain .lhe file
 
-<!--
+```sh
+gunzip ee_aa_LO/Events/run_01/unweighted_events.lhe.gz
+```
 
-After running the calcualtion unweighted_events.lhe.gz files should appear in ee_aa_LO/Events/run_01 and ee_aa_NLO/Events/run_01. These files contain all information about processed events.
--->
+Then after running cmake and make use the compiled binary of the code located in src directory:
+
+```sh
+./bin/BasicReadLHE ee_aa_LO/Events/run_01/unweighted_events.lhe
+```
 
 <!--
 # Using this project for teaching
