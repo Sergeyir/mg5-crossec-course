@@ -12,6 +12,7 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include <regex>
 
 #include "HepMC3/LHEFAttributes.h"
 #include "HepMC3/GenEvent.h"
@@ -19,5 +20,8 @@
 
 #include "TFile.h"
 #include "TH1D.h"
+
+/// Reaturns the cross section read from the specified .lhe file
+double ReadTotCrossSection(const std::string& fileName);
 
 #endif /* BASIC_READ_LHE_HPP */
