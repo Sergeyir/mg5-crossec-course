@@ -1,6 +1,6 @@
 /** 
  *  @file   BasicReadLHE.cpp
- *  @brief  Contains simplest case that shows how the data can be generated with PYTHIA8 and LHAPDF6 and processed with FASTJET3 for jets selection 
+ *  @brief  Contains simplest example on how to read data from .lhe file obtained from MadGraph with HepMC3
  *
  *  This file is a part of a project mg5-crossec-course (https://github.com/Sergeyir/mg5-crossec-course).
  *
@@ -31,27 +31,17 @@ int main(int argc, char **argv)
 
    std::cout << "Reading from file " << argv[1] << std::endl;
 
-   // Initializing reader for LHE file. Reader is used to access information stored in LHE file
+   // Initializing reader for LHE file. Reader is used to access information stored in .lhe file
    LHEF::Reader reader(argv[1]);
 
-   // HepRup contains information about attributes of a run and events
-   std::shared_ptr<HepMC3::HEPRUPAttribute> hepr = std::make_shared<HepMC3::HEPRUPAttribute>();
-
-   // Initializing event attributes
-   hepr->heprup = reader.heprup;
-
-   // Initializing run-wide attributes
-   hepr->tags = LHEF::XMLTag::findXMLTags(reader.headerBlock + reader.initComments);
-
-   HepMC3::GenEvent evt;
-
-   unsigned long numberOfEvents;
+   unsigned long numberOfEvents = 0;
    while (reader.readEvent())
    {
       numberOfEvents++;
 
       if (numberOfEvents % 1000 == 0) std::cout << "Event " << numberOfEvents << "\r" << std::endl;
 
+      // HepMC needs this object to store the event, tags, XML, and other data into
       std::shared_ptr<HepMC3::HEPEUPAttribute> hepe = std::make_shared<HepMC3::HEPEUPAttribute>();
 
       if (reader.outsideBlock.length())
@@ -59,9 +49,10 @@ int main(int argc, char **argv)
          // Each event may have non-standard information outside LHEF event 
          hepe->tags = LHEF::XMLTag::findXMLTags(reader.outsideBlock);
       }
+      // Storing reader event data into HepMC3::HEPEUPAttribute object
       hepe->hepeup = reader.hepeup;
 
-      // iterating over all particles in the current event
+      // Iterating over every particles in the current event
       for (int i = 0; i < hepe->hepeup.NUP; i++)
       {
          HepMC3::GenParticlePtr particle = 
@@ -72,17 +63,19 @@ int main(int argc, char **argv)
          // GenParticle and FourVector methods can be seen here
          // https://dayabay.bnl.gov/dox/HepMC/html/classHepMC_1_1GenParticle.html
          HepMC3::FourVector fourVec = particle->momentum();
-         std::cout << particle->pid() << " " << fourVec.e() << " " << fourVec.px() << " " << fourVec.py() << " " << fourVec.pz() << std::endl;
+
+         std::cout << particle->pid() << " " << fourVec.e() << " " << 
+                      fourVec.px() << " " << fourVec.py() << " " << fourVec.pz() << std::endl;
       }
    }
    
    // Find the measurement units for the total cross section
-   std::cout << "Total cross section: " << ReadTotCrossSection(argv[1]) << std::endl;
+   std::cout << "Total cross section: " << GetTotCrossSection(argv[1]) << std::endl;
 
    return 0;
 }
 
-double ReadTotCrossSection(const std::string& fileName)
+double GetTotCrossSection(const std::string& fileName)
 {
    std::ifstream file(fileName);
 
@@ -99,7 +92,10 @@ double ReadTotCrossSection(const std::string& fileName)
       // stopping if header was passed
       if(line.find("<event") != std::string::npos) break;
    }
-   throw std::runtime_error("cross-section comment not found");
+
+   std::cout << "\033[1m\033[31mError:\033[0m cross-section comment"\
+                "not found in file" + fileName << std::endl;
+   exit(1);
 }
 
 #endif /* BASIC_READ_LHE_CPP */

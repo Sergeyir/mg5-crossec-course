@@ -1,6 +1,6 @@
 /** 
  *  @file   BasicReadLHE.hpp
- *  @brief  Contains simplest case that shows how lhe files can be read using HepMC3
+ *  @brief  Contains simplest example on how to read data from .lhe file obtained from MadGraph with HepMC3
  *
  *  This file is a part of a project mg5-crossec-course (https://github.com/Sergeyir/mg5-crossec-course).
  *
@@ -21,7 +21,7 @@
 #include "TFile.h"
 #include "TH1D.h"
 
-/// Reaturns the cross section read from the specified .lhe file
-double ReadTotCrossSection(const std::string& fileName);
+/// Returns the cross section from the specified .lhe file
+double GetTotCrossSection(const std::string& fileName);
 
 #endif /* BASIC_READ_LHE_HPP */
