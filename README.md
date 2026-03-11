@@ -196,7 +196,7 @@ If you have compiled the code (if not see "Compiling for C++" section in [Instal
 If you have followed the [Installation tutorial](INSTALLATION_TUTORIAL.md) thoroughly no problems with using python should arise. You can execute python script as follows (while also specifying the file we just gunziped to read with "-i" option):
 
 ```sh
-python scripts/basic_read_lhe -i ee_aa_LO/Events/run_01/unweighted_events.lhe
+python scripts/basic_read_lhe.py -i ee_aa_LO/Events/run_01/unweighted_events.lhe
 ```
 
 </details>
