@@ -32,16 +32,19 @@ ROOT6 and HEPMC have to be compiled with python3 if you want to use it in python
 git clone https://github.com/Sergeyir/mg5-crossec-course --depth=1
 ```
 
-Install all requirements and configure environment variables described in [Installation tutorial](INSTALLATION_TUTORIAL.md)
+Install all requirements and configure environment variables described in [Installation tutorial](INSTALLATION_TUTORIAL.md).
 
-<!--
-Python environment should work fine after the last step. If you need to use C++ for this project run
--->
+<details>
+<summary> Compiling for C++ </summary>
+
+Run cmake to generate Makefile, and then run make to compile the code with generated Makefile
 
 ```sh
 cmake .
 make -j
 ```
+
+</details>
 
 To update the repository to the newest version run in its root
 
@@ -174,11 +177,29 @@ After running the calcualtion of examples above unweighted_events.lhe.gz file sh
 gunzip ee_aa_LO/Events/run_01/unweighted_events.lhe.gz
 ```
 
-Then after running cmake and make use the compiled binary of the code located in src directory:
+Then see the following instructions on how to use the code. Also check the code out for your case, as it is not complete, since it only shows the simplest example on how to read .lhe file format.
+
+<details>
+<summary> C++ </summary>
+
+If you have compiled the code (if not see "Compiling for C++" section in [Installation](#installation)). Then you can run the compiled executable as follows (while also specifying the file we just gunziped to read):
 
 ```sh
 ./bin/BasicReadLHE ee_aa_LO/Events/run_01/unweighted_events.lhe
 ```
+
+</details>
+
+<details>
+<summary> python </summary>
+
+If you have followed the [Installation tutorial](INSTALLATION_TUTORIAL.md) thoroughly no problems with using python should arise. You can execute python script as follows (while also specifying the file we just gunziped to read with "-i" option):
+
+```sh
+python scripts/basic_read_lhe -i ee_aa_LO/Events/run_01/unweighted_events.lhe
+```
+
+</details>
 
 <!--
 # Using this project for teaching
