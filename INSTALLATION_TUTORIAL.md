@@ -80,23 +80,21 @@ git clone https://gitlab.cern.ch/hepmc/HepMC3 --depth=1
 Then head into HepMC3 directory and run cmake to generate a Makefile
 
 ```sh
-cmake -DHEPMC3_BUILD_EXAMPLES=ON
+cmake . 
 ```
-
-After it is done, compile libraries with
 
 ```sh
 make -j2
 ```
 
-You can set higher number of threads for compilation, if you have sufficient RAM (more than ~2.5 GB per thread) otherwise you may run out of it.
+You can set higher number of threads for compilation (with -jN option), if you have sufficient RAM (more than ~2.5 GB per thread) otherwise you may run out of it.
 
-Finally set environmental variables
+Finally set environmental variables. Note that 3.XX.XX in $PYTHONPATH corresponds to your python version. To find what version HepMC3 was compiled with check out $HEPMC3\_PATH/python/A/ directory
 
 ```sh
 export HEPMC3_PATH=$PACKAGE_PATH/HepMC3
-export PYTHONPATH=$HEPMC3_PATH/outputs/lib:$PYTHONPATH
 export LD_LIBRARY_PATH=$HEPMC3_PATH/outputs/lib:$LD_LIBRARY_PATH
+export PYTHONPATH=$HEPMC3_PATH/python/A/3.XX.XX/pyHepMC3:$PYTHONPATH
 ```
 
 </details>
@@ -109,7 +107,7 @@ If you followed through the above instructions you can check if packages mention
 
 ```py
 import ROOT
-import hepmc
+import pyHepMC3
 ```
 If no errors occurred, the installation was successful
 
