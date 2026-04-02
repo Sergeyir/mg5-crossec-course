@@ -113,7 +113,13 @@ If no errors occurred, the installation was successful
 
 ## MadGraph
 
-For MadGraph (i.e. MadGraph5_aMC@NLO) no compilation is needed. The code instead is compiled for the process you choose to generate. To install MadGraph clone its repository to the desired location (recommended location - your $PACKAGE_PATH). Then add $PATH variable in your profile in order to use mg5_aMC executable from any directory:
+For MadGraph (i.e. MadGraph5_aMC@NLO) no compilation is needed. The code instead is compiled for the process you choose to generate. To install MadGraph clone its repository to the desired location (recommended location - your $PACKAGE_PATH).
+
+```sh
+git clone https://github.com/mg5amcnlo/mg5amcnlo --depth=1
+```
+
+Then add $PATH variable in your profile in order to use mg5_aMC executable from any directory:
 
 ```sh
 export PATH=$PACKAGE_PATH/mg5amcnlo/bin:$PATH
