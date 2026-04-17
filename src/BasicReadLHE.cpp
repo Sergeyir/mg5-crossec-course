@@ -52,20 +52,23 @@ int main(int argc, char **argv)
       // Storing reader event data into HepMC3::HEPEUPAttribute object
       hepe->hepeup = reader.hepeup;
 
-      // Iterating over every particles in the current event
-      for (int i = 0; i < hepe->hepeup.NUP; i++)
+      if (numberOfEvents == 1)
       {
-         HepMC3::GenParticlePtr particle = 
-            std::make_shared<HepMC3::GenParticle>(hepe->momentum(i), 
-                                                  hepe->hepeup.IDUP[i], 
-                                                  hepe->hepeup.ISTUP[i]);
+         // Iterating over every particles in the current event
+         for (int i = 0; i < hepe->hepeup.NUP; i++)
+         {
+            HepMC3::GenParticlePtr particle = 
+               std::make_shared<HepMC3::GenParticle>(hepe->momentum(i), 
+                                                     hepe->hepeup.IDUP[i], 
+                                                     hepe->hepeup.ISTUP[i]);
 
-         // GenParticle and FourVector methods can be seen here
-         // https://dayabay.bnl.gov/dox/HepMC/html/classHepMC_1_1GenParticle.html
-         HepMC3::FourVector fourVec = particle->momentum();
+            // GenParticle and FourVector methods can be seen here
+            // https://dayabay.bnl.gov/dox/HepMC/html/classHepMC_1_1GenParticle.html
+            HepMC3::FourVector fourVec = particle->momentum();
 
-         std::cout << particle->pid() << " " << fourVec.e() << " " << 
-                      fourVec.px() << " " << fourVec.py() << " " << fourVec.pz() << std::endl;
+            std::cout << particle->pid() << " " << fourVec.e() << " " << 
+                         fourVec.px() << " " << fourVec.py() << " " << fourVec.pz() << std::endl;
+         }
       }
    }
    
@@ -79,7 +82,7 @@ double GetTotCrossSection(const std::string& fileName)
 {
    std::ifstream file(fileName);
 
-   std::regex re(R"(^\s*#\s*Integrated weight \(pb\)\s*:\s*([0-9.+-eE]+))");
+   std::regex re(R"(^#\s*Integrated weight \(pb\)\s*:\s*([0-9.+-eE]+))");
 
    std::string line;
    while (std::getline(file, line))
@@ -93,7 +96,7 @@ double GetTotCrossSection(const std::string& fileName)
       if(line.find("<event") != std::string::npos) break;
    }
 
-   std::cout << "\033[1m\033[31mError:\033[0m cross-section comment"\
+   std::cout << "\033[1m\033[31mError:\033[0m cross-section comment "\
                 "not found in file" + fileName << std::endl;
    exit(1);
 }
