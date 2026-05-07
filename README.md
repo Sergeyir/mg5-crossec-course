@@ -135,6 +135,28 @@ And
 set ebeam2 100
 ```
 
+Remove the incoming particles pdf since MadGraph can set it wrongly for some particles
+```
+set lpp1 0
+```
+```
+set lppt2 0
+```
+
+Set the minimum pT
+
+```
+set pta 0
+```
+
+And the maximum rapidity
+
+```
+set etaa 1
+```
+
+This way we don't need to kinematicaly adjust pT for every energy - MadGrap will only generate kinematicaly possible events (that have non-zero final state partilces pT). By default pTmin=10, which is not applicable for low energies.
+
 Then press enter. At this points the code will be compiled and then executable that calculates the cross seciton will be run. After finishing the calculation MadGraph will create .html file containing event information, cross section calcuation and various differential cross-sections plots. You can view it by running
 
 ```
