@@ -135,27 +135,57 @@ And
 set ebeam2 100
 ```
 
-Remove the incoming particles pdf since MadGraph can set it wrongly for some particles
+Set 0 for incoming beams collider type since MadGraph can set it wrongly for some particles
 ```
 set lpp1 0
 ```
 ```
-set lppt2 0
+set lpp2 0
 ```
 
-Set the minimum pT
+Set the minimum pT of outgoing photons
 
 ```
 set pta 0
 ```
 
-And the maximum rapidity
+If you have an outgoing lepton then instead (or addtionaly) you would need to specfy the minimum pT of outgoing lepton
+
+```
+set ptl 0
+```
+And for outgoing protons
+```
+set pt_min_pdg {2212: 0.}
+```
+
+Set the maximum rapidity for the outgoing photons
 
 ```
 set etaa 1
 ```
 
+If you have the outgoing leptons
+
+```
+set etal 1
+```
+
+And if you have outgoing protons
+
+```
+set eta_max_pdg {2212: 1}
+```
+
 This way we don't need to kinematicaly adjust pT for every energy - MadGrap will only generate kinematicaly possible events (that have non-zero final state partilces pT). By default pTmin=10, which is not applicable for low energies.
+
+Additionaly if you use protons as incoming beams (in this work we don't deal with PDFs) you would want to set
+
+```
+set lhapdf none
+```
+
+All of the parameters above and many more can be checked and edited in ee_aa_LO/Cards/run_param.dat or when you launch the calculations with MadGraph (it prompts you to check or edit the data before the start of the calculations)
 
 Then press enter. At this points the code will be compiled and then executable that calculates the cross seciton will be run. After finishing the calculation MadGraph will create .html file containing event information, cross section calcuation and various differential cross-sections plots. You can view it by running
 
